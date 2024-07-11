@@ -1,0 +1,846 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    /*將fonts.google字型css複製到此*/
+    font-family: "Chocolate Classical Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /*將fonts.google字型css複製到此*/
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+    header {
+        display: flex;
+        align-items: center;
+        /*讓header裡的div.logo跟nav區塊交錯軸置中*/
+        flex-wrap: wrap;
+
+        position: sticky;
+        /*讓head固定*/
+        top: 0;
+        /*position: sticky的固定位置*/
+        background: white;
+        z-index: 1;
+        box-shadow: 3px 3px 5px 1px;
+
+        /*先做起來，之後做javascript偵測*/
+        div.logo {
+            display: flex;
+            align-items: center;
+            flex: 5 1 400px;
+            /*控制div.logo區塊在瀏覽器呈現的大小，可以3個寫在一起，但一定要3個值都寫出來*/
+            // flex-grow: 5;
+            // flex-shrink: 1;
+            // flex-basis: 400px;
+            margin-left: 2rem;
+
+            img {
+                width: 6vw;
+                height: 6vw;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        nav {
+            flex: 2 1 400px;
+            align-items: center;
+
+            ul {
+                display: flex;
+                justify-content: space-around;
+
+                /*nav區塊的範圍要先定義出來才有作用*/
+                li {
+                    a {
+                        color: #09777d;
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        margin: auto;
+        section.backimage {
+            min-height: 90vh;
+            width: 100%;
+            background-image: url(../Pictures/pexels-photo-416676.jpeg);
+            background-size: cover;
+            background-position: center;
+            /*讓圖片中心點維持在畫面中間*/
+            position: relative;
+            /*定位元素，讓元素相對於它原本的位置*/
+            z-index: 0;
+
+            display: flex;
+            /*讓section.backimage底下的物件flex*/
+            justify-content: center;
+            /*水平置中*/
+            align-items: center;
+            /*物件本身置中*/
+            flex-direction: column;
+            /*物件垂直排列*/
+            text-align: center;
+
+            h3 {
+                font-size: 3.5rem;
+                color: white;
+                line-height: 4rem;
+            }
+
+            button {
+                background-color: #3bf0e5;
+                padding: 0.75rem 1.5rem;
+                font-size: 1.5rem;
+                color: white;
+                border-radius: 1rem;
+                border: none;
+                cursor: pointer;
+                /*滑鼠移過去變手指外觀*/
+                margin-top: 1.5rem;
+
+            }
+
+            div.filter {
+                background-color: rgba(0, 0, 0, 0.2);
+                width: 100%;
+                min-height: 90vh;
+                position: absolute;
+                /*以父層secion.backimage為基準點定位*/
+                top: 0;
+                z-index: -1;
+                /*讓div.filter圖層往下退*/
+            }
+        }
+
+        section.second {
+            min-height: 100vh;
+            /*元素的最小高度被設置為整個視窗的高度*/
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            h2 {
+                font-size: 2.5rem;
+                line-height: 3.5rem;
+                margin: 2rem 0;
+            }
+
+            section.cards {
+                display: flex;
+                // border: 2px solid red;
+                width: 80%;
+                // height: 80vh; 手機版的設定無法作用，因此要改成min-height
+                min-height: 80vh;
+                flex-wrap: wrap;
+                /*視窗寬度縮減後會換行*/
+
+                div.card {
+                    // border: 2px solid blue;
+                    display: flex;
+                    /*讓div.card 底下的元件排列*/
+                    flex-direction: column;
+                    /*讓元件垂直排列*/
+                    align-items: center;
+                    /*讓元件交錯軸置中*/
+                    justify-content: space-around;
+                    padding: 1rem;
+                    flex: 1 1 300px;
+                    /*對應到上層的flex，根據需要擴展或者縮小（取決於可用空間和子項目的內容）*/
+
+                    .img-container {
+                        width: 15vw;
+                        height: 15vw;
+                        border-radius: 50%;
+                        // border: 1px solid #3bf0e5; /*檢查用，原本圖片的margin改到a, 圖片才會回歸*/
+                        overflow: hidden;
+                        /*圖片超過的蓋起來*/
+
+                        img {
+                            width: 15vw;
+                            height: 15vw;
+                            border-radius: 50%;
+                            transition: all 0.4s;
+                            /*過渡秒數復原*/
+
+                            &:hover {
+                                /*父層的hover*/
+                                transform: scale(1.2);
+                                /*動態放大，之後再過渡秒數回復原狀*/
+                            }
+
+                        }
+
+                    }
+
+                    h4 {
+                        font-size: 2rem;
+                        margin: 1rem 0;
+                    }
+
+                    p {
+                        font-size: 1.25rem;
+                        line-height: 1.75rem;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        padding: 1rem 1.5rem;
+                        background-color: #09777d;
+                        color: white;
+                        font-size: 1.25rem;
+                        margin: 1rem 0;
+                    }
+                }
+            }
+        }
+        /*about me 設定*/
+        section.about-backimage {
+            background-image: url(../Pictures/title.jpg);
+            min-height: 60vh;
+            width: 100vw;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+
+            z-index: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            
+            h3 {
+                font-size: 4rem;
+                color:#e4fe2e;
+                margin-left: 5vw;
+                font-weight: bolder;
+            }
+
+            button {
+                font-size: 1.3rem;
+                font-weight: bold;
+                padding: 5px 15px;
+                background-color: #5a7638;
+                color: white;
+                border-radius: 5px;
+                border: 1px solid #5a7638;
+                margin-top: 20px;
+                margin-left: 5vw;
+                cursor: pointer;
+
+            }
+
+            div.filter {
+                background-color: rgba(65, 100, 20, 0.3);
+                width: 100vw;
+                min-height: 60vh;
+                position: absolute;
+                /*以父層secion.backimage為基準點定位*/
+                top: 0;
+                z-index: -1;
+                /*讓div.filter圖層往下退*/
+            }
+
+        }
+
+        section.second2{
+            // min-height: 70vh;
+            width: 100%;
+
+            .setP{
+                width: 90vw;
+                padding: 60px 0;
+                
+                h2{
+                    font-size: 2.5rem;
+                    line-height: 3.5rem;
+                    margin-left: 5vw;
+
+                    span.delline{
+                        font-size: 2rem;
+                        color: #9caba3;
+                        text-decoration: line-through;
+                    }
+                }
+
+                p{
+                    font-size: 1.1rem;
+                    margin: 30px 0px;
+                    line-height: 2rem;
+                    margin-left: 5vw;
+                }
+            }
+
+            .r-pic{
+                min-width: 60vw;
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+        section.section3{
+            min-width: 90vw;
+            background-color:#E6EAE8;
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            
+            .pic-3{
+                min-width:40vw;
+                margin: 5vw;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+            .text-3{
+                min-width:40vw;
+                font-size: 1.1rem;
+                color: #002D18;
+                margin-right: 5vw;
+                line-height: 2rem;
+
+                h6{
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                    font-weight:bold;
+                }
+
+                h3{
+                    font-size: 3rem;
+                    font-weight:bolder;
+                }
+
+                p{
+                    margin: 30px 0px;
+                    line-height: 2rem;
+                    font-weight:bold;
+                }
+
+                button.but-know{
+                    display:inline-block;
+                    color: #002D18;
+                    font-size: 1rem;
+                    padding: 10px 30px;
+                    border: 3px solid #002D18;
+                    border-radius: 5px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+                    background-color: #E6EAE8;
+                }
+
+                button.but-know:hover{
+                color: #01a357;
+                border: 3px solid #01a357;
+                }
+            }
+        }
+
+        section.section4{
+            min-width: 90vw;
+            background-color:#CED5D1;
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            
+            .pic-4{
+                min-width:40vw;
+                margin: 5vw;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+            .text-4{
+                min-width:40vw;
+                font-size: 1.1rem;
+                color: #002D18;
+                margin-left: 5vw;
+                line-height: 2rem;
+                
+
+                h6{
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                    font-weight:bold;
+                }
+
+                h3{
+                    font-size: 3rem;
+                    font-weight:bolder;
+                }
+
+                p{
+                    margin: 30px 0px;
+                    line-height: 2rem;
+                    font-weight:bold;
+                }
+
+                button.but-know{
+                    display:inline-block;
+                    color: #002D18;
+                    font-size: 1rem;
+                    padding: 10px 30px;
+                    border: 3px solid #002D18;
+                    border-radius: 5px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+                    background-color: #CED5D1;
+                }
+
+                button.but-know:hover{
+                color: #01a357;
+                border: 3px solid #01a357;
+                }
+            }
+        }
+        section.section5{
+            min-width: 90vw;
+            background-color:#9CABA3;
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            
+            .pic-5{
+                min-width:40vw;
+                margin: 5vw;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+            .text-5{
+                min-width:40vw;
+                font-size: 1.1rem;
+                color: #002D18;
+                margin-right: 5vw;
+                line-height: 2rem;
+
+                h6{
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                    font-weight:bold;
+                }
+
+                h3{
+                    font-size: 3rem;
+                    font-weight:bolder;
+                }
+
+                p{
+                    margin: 30px 0px;
+                    line-height: 2rem;
+                    font-weight:bold;
+                }
+
+                button.but-know{
+                    display:inline-block;
+                    color: #002D18;
+                    background-color: #9CABA3;
+                    font-size: 1rem;
+                    padding: 10px 30px;
+                    border: 3px solid #002D18;
+                    border-radius: 5px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+                }
+
+                button.but-know:hover{
+                color: #01a357;
+                border: 3px solid #01a357;
+                }
+            }
+        }
+        
+    }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            /*footer內容垂直排列*/
+            align-items: center;
+            min-height: 40vh;
+            justify-content: space-around;
+            background-color: aliceblue;
+
+            div.logo {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 5vw;
+                    height: 5vw;
+                }
+
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            nav {
+                width: 30%;
+
+                /*受到footer flex 影響，ul寬度會沒有作用，因此要設在nav底下撐開nav*/
+                ul {
+                    display: flex;
+                    list-style-type: none;
+                    // width: 30%; 受到footer flex 影響，ul寬度會沒有作用，因此要設在nav底下撐開nav
+                    justify-content: space-around;
+                    /*主要軸線分散對齊*/
+                    flex-wrap: wrap;
+
+                    /*讓footer導航列手機版時換行*/
+                    li {
+                        flex-basis: 100px;
+
+                        a {
+                            color: #000;
+                            text-decoration: none;
+                            font-size: 1.35rem;
+                            font-weight: bolder;
+                        }
+                    }
+                }
+            }
+
+            section.links {
+                a {
+                    margin: 0rem 1rem;
+
+                    img {
+                        width: 5vw;
+                        height: 5vw;
+                    }
+                }
+            }
+        }
+    
+
+    /*設定div.logo 響應式大小*/
+    @media(max-width:550px) {
+        div#content {
+            header {
+                div.logo {
+                    margin-left: 1rem;
+
+                    img {
+                        width: 15vw;
+                        height: 15vw;
+                    }
+                }
+            }
+
+            footer {
+                div.logo {
+                    img {
+                        width: 15vw;
+                        height: 15vw;
+                    }
+                }
+            }
+        }
+
+    }
+
+    /*設定main底下圖片的響應式大小*/
+    @media(max-width:750px) {
+        main {
+            section.second {
+                section.cards {
+                    div.card {
+                        img {
+                            width: 40vw;
+                            height: 40%;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    /*設定section3底下圖文的響應式大小*/
+    @media screen and (max-width:750px) {
+        main{
+            section.section3{
+                flex-wrap: wrap;
+                .pic-3{
+                    width: 100vw;
+                }
+    
+                .text-3{
+                    width: 100vw;
+                    font-size: 1.1rem;
+                    color: #002D18;
+                    margin: 0px 30px;
+                    line-height: 2rem;
+    
+                    h6{
+                        font-size: 1.2rem;
+                        margin-bottom: 10px;
+                        font-weight:bold;
+                    }
+    
+                    h3{
+                        font-size: 2rem;
+                        font-weight:bolder;
+                    }
+    
+                    p{
+                        margin: 30px 0px;
+                        line-height: 2rem;
+                        font-weight:bold;
+                    }
+    
+
+                }
+            }
+        }
+    }
+
+    /*設定section4底下圖文的響應式大小*/
+    @media screen and (max-width:750px) {
+        main{
+            section.section4{
+                flex-wrap:wrap-reverse;
+                
+                .pic-4{
+                    width: 100vw;
+                }
+    
+                .text-4{
+                    width: 100vw;
+                    font-size: 1.1rem;
+                    color: #002D18;
+                    margin: 0px 30px;
+                    line-height: 2rem;
+    
+                    h6{
+                        font-size: 1.2rem;
+                        margin-bottom: 10px;
+                        font-weight:bold;
+                    }
+    
+                    h3{
+                        font-size: 2rem;
+                        font-weight:bolder;
+                    }
+    
+                    p{
+                        margin: 30px 0px;
+                        line-height: 2rem;
+                        font-weight:bold;
+                    }
+    
+
+                }
+            }
+        }
+    }
+
+    /*設定section5底下圖文的響應式大小*/
+    @media screen and (max-width:750px) {
+        main{
+            section.section5{
+                flex-wrap: wrap;
+                .pic-5{
+                    width: 100vw;
+                }
+    
+                .text-5{
+                    width: 100vw;
+                    font-size: 1.1rem;
+                    color: #002D18;
+                    margin: 0px 30px;
+                    line-height: 2rem;
+    
+                    h6{
+                        font-size: 1.2rem;
+                        margin-bottom: 10px;
+                        font-weight:bold;
+                    }
+    
+                    h3{
+                        font-size: 2rem;
+                        font-weight:bolder;
+                    }
+    
+                    p{
+                        margin: 30px 0px;
+                        line-height: 2rem;
+                        font-weight:bold;
+                    }
+    
+
+                }
+            }
+        }
+    }
+        
+
+    /*scorll bar*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #09777d;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3bf0e5;
+    }
